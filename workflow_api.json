@@ -1,0 +1,474 @@
+{
+  "141": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_eexzo_00003_tmisz_1763335893.jpg&type=temp&subfolder=&rand=0.1045522176664051&Rh-Comfy-Auth=eyJ1c2VySWQiOiI1ZDJmNDViZjJlOWY5ZWQwMWY5ODUxMGE2NDEwMTY3NiIsInNpZ25FeHBpcmUiOjE3NjM5MzkwODgxMTYsInRzIjoxNzYzMzM0Mjg4MTE2LCJzaWduIjoiN2U2Yjc3Y2JiMjRmMDNmYzIyOTQzMThmNGYzNDYwOTMifQ==&Rh-Identify=5d2f45bf2e9f9ed01f98510a64101676"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/view?filename=rgthree.compare._temp_eexzo_00004_ajetz_1763335897.jpg&type=temp&subfolder=&rand=0.5124754471363031&Rh-Comfy-Auth=eyJ1c2VySWQiOiI1ZDJmNDViZjJlOWY5ZWQwMWY5ODUxMGE2NDEwMTY3NiIsInNpZ25FeHBpcmUiOjE3NjM5MzkwODgxMTYsInRzIjoxNzYzMzM0Mjg4MTE2LCJzaWduIjoiN2U2Yjc3Y2JiMjRmMDNmYzIyOTQzMThmNGYzNDYwOTMifQ==&Rh-Identify=5d2f45bf2e9f9ed01f98510a64101676"
+          }
+        ]
+      },
+      "image_a": [
+        "227",
+        0
+      ],
+      "image_b": [
+        "218",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "147": {
+    "inputs": {
+      "upscale_by": 1.0000000000000002,
+      "seed": 775279688587299,
+      "steps": 2,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.08000000000000002,
+      "mode_type": "Linear",
+      "tile_width": 1024,
+      "tile_height": 1024,
+      "mask_blur": 64,
+      "tile_padding": 80,
+      "seam_fix_mode": "None",
+      "seam_fix_denoise": 1,
+      "seam_fix_width": 64,
+      "seam_fix_mask_blur": 8,
+      "seam_fix_padding": 16,
+      "force_uniform_tiles": true,
+      "tiled_decode": true,
+      "image": [
+        "225",
+        0
+      ],
+      "model": [
+        "167",
+        0
+      ],
+      "positive": [
+        "157",
+        0
+      ],
+      "negative": [
+        "148",
+        0
+      ],
+      "vae": [
+        "187",
+        0
+      ],
+      "upscale_model": [
+        "189",
+        0
+      ],
+      "custom_sampler": [
+        "150",
+        0
+      ],
+      "custom_sigmas": [
+        "158:1",
+        0
+      ]
+    },
+    "class_type": "UltimateSDUpscaleCustomSample",
+    "_meta": {
+      "title": "Ultimate SD Upscale (Custom Sample)"
+    }
+  },
+  "148": {
+    "inputs": {
+      "text": "blurry, pixelated, distorted proportions, incorrect anatomy, deformed hands, extra fingers, color shift, unwanted objects, artifacts, noise\n",
+      "clip": [
+        "167",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "150": {
+    "inputs": {
+      "detail_amount": 0.1,
+      "start": 0.2,
+      "end": 0.8,
+      "bias": 0.5,
+      "exponent": 1,
+      "start_offset": 0,
+      "end_offset": 0,
+      "fade": 0,
+      "smooth": true,
+      "cfg_scale_override": 0,
+      "sampler": [
+        "158:0",
+        0
+      ]
+    },
+    "class_type": "DetailDaemonSamplerNode",
+    "_meta": {
+      "title": "Detail Daemon Sampler"
+    }
+  },
+  "156": {
+    "inputs": {
+      "text": [
+        "168",
+        0
+      ],
+      "clip": [
+        "167",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "157": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "167": {
+    "inputs": {
+      "lora_name": "FLUX.1-Turbo-Alpha 8steps .safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "188",
+        0
+      ],
+      "clip": [
+        "186",
+        0
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "168": {
+    "inputs": {
+      "text1": [
+        "204",
+        0
+      ],
+      "text2": "Enhance image quality, preserve all original details, maintain composition, keep colors and style consistent, improve sharpness, clean details, balanced lighting, noise-free, artifact-free\n",
+      "separator": ",",
+      "text3": ""
+    },
+    "class_type": "ConcatTextOfUtils",
+    "_meta": {
+      "title": "Concat Text"
+    }
+  },
+  "186": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
+      "type": "flux"
+    },
+    "class_type": "DualCLIPLoaderGGUF",
+    "_meta": {
+      "title": "DualCLIPLoader (GGUF)"
+    }
+  },
+  "187": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "188": {
+    "inputs": {
+      "unet_name": "Flux1-Dev-SRPO-v1-Q8_0.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "Unet Loader (GGUF)"
+    }
+  },
+  "189": {
+    "inputs": {
+      "model_name": "4x_NMKD-Siax_200k.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "Load Upscale Model"
+    }
+  },
+  "190": {
+    "inputs": {
+      "filename_prefix": "DetailUp ",
+      "file_type": "JPEG",
+      "remove_metadata": true,
+      "images": [
+        "227",
+        0
+      ]
+    },
+    "class_type": "SaveImagePlus",
+    "_meta": {
+      "title": "Save Image Plus"
+    }
+  },
+  "198": {
+    "inputs": {
+      "anything": [
+        "147",
+        0
+      ]
+    },
+    "class_type": "easy cleanGpuUsed",
+    "_meta": {
+      "title": "Clean VRAM Used"
+    }
+  },
+  "204": {
+    "inputs": {
+      "task": "more detailed caption",
+      "text_input": "",
+      "max_new_tokens": 1024,
+      "num_beams": 3,
+      "do_sample": false,
+      "fill_mask": false,
+      "florence2_model": [
+        "206",
+        0
+      ],
+      "image": [
+        "225",
+        0
+      ]
+    },
+    "class_type": "LayerUtility: Florence2Image2Prompt",
+    "_meta": {
+      "title": "LayerUtility: Florence2 Image2Prompt(Advance)"
+    }
+  },
+  "206": {
+    "inputs": {
+      "version": "CogFlorence-2.1-Large"
+    },
+    "class_type": "LayerMask: LoadFlorence2Model",
+    "_meta": {
+      "title": "LayerMask: Load Florence2 Model(Advance)"
+    }
+  },
+  "216": {
+    "inputs": {
+      "facedetection": "retinaface_resnet50",
+      "model": "GFPGANv1.4.pth",
+      "visibility": 0.8000000000000002,
+      "codeformer_weight": 0.4000000000000001,
+      "image": [
+        "218",
+        0
+      ]
+    },
+    "class_type": "ReActorRestoreFace",
+    "_meta": {
+      "title": "Restore Face 🌌 ReActor"
+    }
+  },
+  "217": {
+    "inputs": {
+      "tiled_vae": true,
+      "vae_tile_size": 512,
+      "vae_tile_overlap": 64,
+      "preserve_vram": true,
+      "cache_model": false,
+      "enable_debug": false
+    },
+    "class_type": "SeedVR2ExtraArgs",
+    "_meta": {
+      "title": "SeedVR2 Extra Args"
+    }
+  },
+  "218": {
+    "inputs": {
+      "image": "cfa96089e1481fd8610ef9408b85f15e50e00b4a925bf778fb54fa1eae85f263.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "219": {
+    "inputs": {
+      "blocks_to_swap": 32,
+      "use_non_blocking": false,
+      "offload_io_components": false
+    },
+    "class_type": "SeedVR2BlockSwap",
+    "_meta": {
+      "title": "SeedVR2 BlockSwap Config"
+    }
+  },
+  "220": {
+    "inputs": {
+      "preset_ratio": "origin",
+      "proportional_width": 1,
+      "proportional_height": 1,
+      "method": "bicubic",
+      "scale_to_side": "longest",
+      "scale_to_length": 1024,
+      "fit": "crop",
+      "pad_color": "1.0",
+      "divisible_by": 8,
+      "image": [
+        "216",
+        0
+      ]
+    },
+    "class_type": "ImageResizeUniversal",
+    "_meta": {
+      "title": "Image Resize Universal"
+    }
+  },
+  "221": {
+    "inputs": {
+      "value": 4000
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Int"
+    }
+  },
+  "222": {
+    "inputs": {
+      "model": "seedvr2_ema_7b_fp16.safetensors",
+      "seed": 497299503,
+      "new_resolution": [
+        "221",
+        0
+      ],
+      "batch_size": 5,
+      "images": [
+        "220",
+        0
+      ],
+      "block_swap_config": [
+        "219",
+        0
+      ],
+      "extra_args": [
+        "217",
+        0
+      ]
+    },
+    "class_type": "SeedVR2",
+    "_meta": {
+      "title": "SeedVR2 Video Upscaler"
+    }
+  },
+  "225": {
+    "inputs": {
+      "preset_ratio": "origin",
+      "proportional_width": 1,
+      "proportional_height": 1,
+      "method": "bicubic",
+      "scale_to_side": "shortest",
+      "scale_to_length": 4000,
+      "fit": "crop",
+      "pad_color": "1.0",
+      "divisible_by": 8,
+      "image": [
+        "222",
+        0
+      ]
+    },
+    "class_type": "ImageResizeUniversal",
+    "_meta": {
+      "title": "Image Resize Universal"
+    }
+  },
+  "226": {
+    "inputs": {
+      "anything": [
+        "222",
+        0
+      ]
+    },
+    "class_type": "easy cleanGpuUsed",
+    "_meta": {
+      "title": "Clean VRAM Used"
+    }
+  },
+  "227": {
+    "inputs": {
+      "factor": 2,
+      "image": [
+        "147",
+        0
+      ]
+    },
+    "class_type": "SharpnessNode",
+    "_meta": {
+      "title": "Sharpness"
+    }
+  },
+  "158:0": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "158:1": {
+    "inputs": {
+      "scheduler": "simple",
+      "steps": 2,
+      "denoise": 0.08000000000000002,
+      "model": [
+        "167",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "BasicScheduler"
+    }
+  },
+  "158:2": {
+    "inputs": {
+      "max_shift": 1.15,
+      "base_shift": 0.5,
+      "width": 832,
+      "height": 1152
+    },
+    "class_type": "ModelSamplingFlux",
+    "_meta": {
+      "title": "ModelSamplingFlux"
+    }
+  }
+}
