@@ -1,12 +1,3 @@
 build:
   python_version: "3.10"
 predict: "predict.py:Predictor"
-inputs:
-  image:
-    type: file
-    description: "Imagen para procesar"
-    required: false
-  image_url:
-    type: string
-    description: "URL de la imagen (si no se carga archivo)"
-    required: false
