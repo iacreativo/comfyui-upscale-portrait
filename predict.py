@@ -2,58 +2,56 @@ from cog import BasePredictor, Input, Path
 from PIL import Image
 import requests
 import os
-import json
+import subprocess
 
 class Predictor(BasePredictor):
     def setup(self):
-        # Validación de presencia de modelos
-        required_models = [
-            "4x_NMKD-Siax_200k.pth",
-            "FLUX.1-Turbo-Alpha 8steps .safetensors",
-            "Flux1-Dev-SRPO-v1-Q8_0.gguf",
-            "GFPGANv1.4.pth",
-            "ae.safetensors",
-            "clip_l.safetensors",
-            "flux1-dev-Q8_0.gguf",
-            "seedvr2_ema_7b_fp16.safetensors",
-            "t5xxl_fp8_e4m3fn.safetensors"
-        ]
-        missing = [m for m in required_models if not os.path.exists(m)]
-        if missing:
-            raise RuntimeError(f"Faltan modelos esenciales: {missing}")
-
-        # Workflow, si lo necesitas cargar global
-        try:
-            with open("workflow_api.json") as f:
-                self.workflow = json.load(f)
-        except Exception as e:
-            self.workflow = None
-            print("Error cargando workflow_api.json:", e)
+        # Si necesitas validar modelos/pesos antes de correr, hazlo aquí.
+        print("Predictor inicializado.")
 
     def predict(
         self,
-        image: Path = Input(description="Imagen local para procesar", default=None),
-        image_url: str = Input(description="URL de imagen (si no se carga archivo)", default=""),
+        image: Path = Input(description="Imagen a procesar (jpg/png)", default=None),
+        image_url: str = Input(description="URL de imagen (opcional)", default=""),
     ) -> Path:
         try:
-            if image is not None:
+            # 1. Recibe imagen y la guarda como input.jpg
+            if image:
                 img = Image.open(str(image))
             elif image_url:
                 resp = requests.get(image_url, stream=True)
                 resp.raise_for_status()
                 img = Image.open(resp.raw)
             else:
-                raise ValueError("Debes enviar image o image_url")
+                raise ValueError("Debes enviar 'image' o 'image_url'")
+            input_path = "/src/input.jpg"
+            img.save(input_path)
+            print(f"Imagen guardada como {input_path}")
 
-            img = img.convert("RGB")
-            output_path = "output.jpg"
-            img.save(output_path)
-            # Aquí aplicarías el workflow real con tus modelos
-            # output_path debe devolver la imagen procesada final
-            return Path(output_path)
+            # 2. Ejecuta tu workflow. Ajusta el comando si necesitas flags diferentes.
+            # Asume que ComfyUI/main.py está en el repo, y workflow_api.json es tu workflow
+            result = subprocess.run([
+                "python", "main.py",
+                "--workflow", "workflow_api.json",
+                "--input", input_path
+            ], capture_output=True, text=True)
+            print("STDOUT:", result.stdout)
+            print("STDERR:", result.stderr)
+
+            # 3. Devuelve el archivo resultante. Ajusta nombre/ruta si tu workflow produce otro nombre.
+            output_path = "/src/output.jpg"
+            if os.path.exists(output_path):
+                print(f"Resultado listo: {output_path}")
+                return Path(output_path)
+            else:
+                print("No se encontró la imagen procesada, devolviendo error.")
+                err_path = "/src/error.txt"
+                with open(err_path, "w") as f:
+                    f.write(result.stderr)
+                return Path(err_path)
         except Exception as e:
-            # Crea un archivo txt con el error y lo retorna como señal
-            err_path = "error.txt"
+            print("Error en la función predict:", e)
+            err_path = "/src/error.txt"
             with open(err_path, "w") as f:
                 f.write(str(e))
             return Path(err_path)
