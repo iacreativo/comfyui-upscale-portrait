@@ -1,34 +1,4 @@
 {
-  "141": {
-    "inputs": {
-      "rgthree_comparer": {
-        "images": [
-          {
-            "name": "A",
-            "selected": true,
-            "url": "/view?filename=rgthree.compare._temp_eexzo_00003_tmisz_1763335893.jpg&type=temp&subfolder=&rand=0.1045522176664051&Rh-Comfy-Auth=eyJ1c2VySWQiOiI1ZDJmNDViZjJlOWY5ZWQwMWY5ODUxMGE2NDEwMTY3NiIsInNpZ25FeHBpcmUiOjE3NjM5MzkwODgxMTYsInRzIjoxNzYzMzM0Mjg4MTE2LCJzaWduIjoiN2U2Yjc3Y2JiMjRmMDNmYzIyOTQzMThmNGYzNDYwOTMifQ==&Rh-Identify=5d2f45bf2e9f9ed01f98510a64101676"
-          },
-          {
-            "name": "B",
-            "selected": true,
-            "url": "/view?filename=rgthree.compare._temp_eexzo_00004_ajetz_1763335897.jpg&type=temp&subfolder=&rand=0.5124754471363031&Rh-Comfy-Auth=eyJ1c2VySWQiOiI1ZDJmNDViZjJlOWY5ZWQwMWY5ODUxMGE2NDEwMTY3NiIsInNpZ25FeHBpcmUiOjE3NjM5MzkwODgxMTYsInRzIjoxNzYzMzM0Mjg4MTE2LCJzaWduIjoiN2U2Yjc3Y2JiMjRmMDNmYzIyOTQzMThmNGYzNDYwOTMifQ==&Rh-Identify=5d2f45bf2e9f9ed01f98510a64101676"
-          }
-        ]
-      },
-      "image_a": [
-        "227",
-        0
-      ],
-      "image_b": [
-        "218",
-        0
-      ]
-    },
-    "class_type": "Image Comparer (rgthree)",
-    "_meta": {
-      "title": "Image Comparer (rgthree)"
-    }
-  },
   "147": {
     "inputs": {
       "upscale_by": 1.0000000000000002,

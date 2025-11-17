@@ -2,4 +2,8 @@ torch
 torchvision
 pillow
 aiohttp
-...
+numpy
+requests
+scipy
+opencv-python
+# Añade aquí extras si algún nodo te lo pide (ejemplo: einops, transformers, etc.)

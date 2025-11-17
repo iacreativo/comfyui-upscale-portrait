@@ -1,7 +1,12 @@
 build:
   python_version: "3.10"
-  # Si tienes requirements.txt y Dockerfile, este bloque te lo maneja Replicate igual.
-  # Puedes omitir Dockerfile si usas solo cog.
-
 predict: "predict.py:Predictor"
-# Esto le dice a Replicate que tu clase predictora está en predict.py y se llama Predictor
+inputs:
+  image:
+    type: file
+    description: "Imagen para procesar"
+    required: false
+  image_url:
+    type: string
+    description: "URL de la imagen (si no se carga archivo)"
+    required: false
